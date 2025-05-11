@@ -168,7 +168,7 @@ def show_database_interface():
 
 # ——— Raspberry Pi Interface —————————————————————————
 def show_raspberry_pi_interface():
-    st.title("📊 Raspberry Pi Dataset Explorer")
+    st.title("📊 Raspberry Pi Database Explorer")
     if not st.session_state.datasets:
         st.warning("No datasets found on Raspberry Pi")
         return
