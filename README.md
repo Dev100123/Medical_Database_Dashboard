@@ -51,6 +51,6 @@ Ensure the necessary ports are open and the server allows remote connections.
 
 The dashboard enables users to:
 
-🔹 Connect to a medical database
-🔁 Switch between Docker MySQL or Raspberry Pi backends
-📊 Visualize and interact with medical datasets
+- 🔹 Connect to a medical database
+- 🔁 Switch between Docker MySQL or Raspberry Pi backends
+- 📊 Visualize and interact with medical datasets
