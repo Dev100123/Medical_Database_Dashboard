@@ -243,7 +243,7 @@ def load_datasets():
 
 # ——— Load RPi Datasets ——————————————————————————
 def load_rpi_datasets_ssh(ssh, dataset_dir, debug=False):
-    with st.spinner("Reading CSV datasets from Raspberry Pi..."):
+    with st.spinner("Reading datasets from Raspberry Pi..."):
         try:
             cmd = f"ls {dataset_dir}/*.csv"
             stdin, stdout, stderr = ssh.exec_command(cmd)
