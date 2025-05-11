@@ -256,8 +256,8 @@ def load_rpi_datasets_ssh(ssh, dataset_dir, debug=False):
             for file_path in file_list:
                 filename = os.path.basename(file_path)
                 name = os.path.splitext(filename)[0].lower()
-                #read_cmd = f"head -n 500 {file_path}"
-                read_cmd = f"cat {file_path}"
+                read_cmd = f"head -n 500 {file_path}"
+                #read_cmd = f"cat {file_path}"
                 stdin, stdout, stderr = ssh.exec_command(read_cmd)
                 csv_content = stdout.read().decode()
                 df = pd.read_csv(io.StringIO(csv_content))
