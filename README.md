@@ -26,7 +26,7 @@ Run this command to download the pre-configured image:
 
 #### 1. MySQL Server Login
 
-#### MySQL Credentials Use the following credentials to connect to the MySQL database inside Docker:
+#### MySQL Credentials Use the following credentials to connect to the MySQL database inside Dashboard Application:
 
 ```bash
     Username: your_mysql_username
