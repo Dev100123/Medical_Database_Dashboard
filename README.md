@@ -19,14 +19,14 @@ Quick and containerized setup using Docker.
 Run this command to download the pre-configured image:
 
 ```bash
-    Start the Docker Container
+    Start the Docker 
     docker pull example:v1
-    Run the container with this command: docker run -d -p 3306:3306 --name example examplel:v1
+    Run the docker image with this command: docker run -d -p 3306:3306 --name example examplel:v1
 ```
 
 #### 1. MySQL Server Login
 
-#### MySQL Credentials Use the following credentials to connect to the MySQL database inside Dashboard Application:
+#### Make sure your Docker Container is running and connect to the Docker MySQL server, Provide the following information in the MySQL Credential:
 
 ```bash
     Username: your_mysql_username
@@ -37,7 +37,7 @@ Run this command to download the pre-configured image:
 
 #### If you prefer to use a Raspberry Pi server instead of Docker:
 
-Make sure your Raspberry Pi server is running and the database service is accessible. Provide the following information in the dashboard:
+Make sure your Raspberry Pi server is running and the database service is accessible. Provide the following information in the Raspberry Pi Credential:
 
 ```bash
     IP Address: raspberry_pi_ip
