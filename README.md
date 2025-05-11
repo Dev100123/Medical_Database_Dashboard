@@ -22,7 +22,6 @@ Run this command to download the pre-configured image:
     docker pull example:v1
     Start the Docker Container
     Run the container with this command: docker run -d -p 3306:3306 --name example examplel:v1
-    bash
 ```
 
 #### 1. MySQL Server Login
@@ -32,7 +31,6 @@ Run this command to download the pre-configured image:
 ```bash
     Username: your_mysql_username
     Password: your_mysql_password
-    bash
 ```
 
 ### 🔹 Option 2: Connect via Raspberry Pi Server
@@ -45,7 +43,6 @@ Make sure your Raspberry Pi server is running and the database service is access
     IP Address: raspberry_pi_ip
     Username: raspberry_pi_username
     Password: raspberry_pi_password
-    bash
 ```
 
 Ensure the necessary ports are open and the server allows remote connections.
