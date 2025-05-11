@@ -24,7 +24,7 @@ Run this command to download the pre-configured image:
     Run the docker image with this command: docker run -d -p 3306:3306 --name example examplel:v1
 ```
 
-#### 1. MySQL Server Login
+#### 1. Connect via MySQL Server
 
 #### Make sure your Docker Container is running and connect to the Docker MySQL server, Provide the following information in the MySQL Credential:
 
