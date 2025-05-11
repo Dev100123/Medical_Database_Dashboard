@@ -19,8 +19,8 @@ Quick and containerized setup using Docker.
 Run this command to download the pre-configured image:
 
 ```bash
-    docker pull example:v1
     Start the Docker Container
+    docker pull example:v1
     Run the container with this command: docker run -d -p 3306:3306 --name example examplel:v1
 ```
 
