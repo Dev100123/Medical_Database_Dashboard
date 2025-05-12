@@ -6,7 +6,7 @@ A sleek and intuitive **dashboard interface** built to access and manage medical
 
 ## 🧭 Workflow Diagram
 
-![Workflow Diagram](diagram/flow_diagram.png)
+![Workflow Diagram](diagram/diagram.png)
 
 ---
 
