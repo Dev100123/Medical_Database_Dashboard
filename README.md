@@ -4,6 +4,10 @@ A sleek and intuitive **dashboard interface** built to access and manage medical
 
 🔗 [👉 View the Live Dashboard Here 👈](https://medicaldatabasedashboard-kvpsm4xuptbxabjcxtvgdw.streamlit.app/)
 
+## 🧭 Workflow Diagram
+
+![Workflow Diagram](diagram/flow_diagram.png)
+
 ---
 
 ## 🚀 Getting Started
@@ -19,7 +23,7 @@ Quick and containerized setup using Docker.
 Run this command to download the pre-configured image:
 
 ```bash
-    Start the Docker 
+    Start the Docker
     docker pull example:v1
     Run the docker image with this command: docker run -d -p 3306:3306 --name example examplel:v1
 ```
