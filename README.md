@@ -12,6 +12,8 @@ A sleek and intuitive **dashboard interface** built to access and manage medical
 
 ## 🚀 Getting Started
 
+![Workflow Diagram](diagram/diagram1.png)
+
 You can choose between two backend connection options:
 
 ### 🔹 Option 1: Docker MySQL Server
