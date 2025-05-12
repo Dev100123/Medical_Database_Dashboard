@@ -191,7 +191,10 @@ def display_dataset_content():
     else:
         df = st.session_state.datasets[sel]
         if sel == "anagrafica":
-            show_anagrafica_dashboard(df)
+            cols_to_drop = [2, 3, 7,8]
+            df_filtered = df.drop(df.columns[cols_to_drop], axis=1)
+            show_anagrafica_dashboard(df_filtered)
+            #show_anagrafica_dashboard(df)
         elif sel == "anamnesi":
             show_anamnesi_dashboard(df)
         elif sel == "consulenza_telematica":
