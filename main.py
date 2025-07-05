@@ -25,7 +25,7 @@ from dashboard.visitacardiologica_dashboard import show_visitacardiologica_dashb
 
 
 # ——— Streamlit Config —————————————————————————————
-st.set_page_config(page_title="Database Dashboard", layout="wide")
+st.set_page_config(page_title="Medical Database Dashboard", layout="wide")
 load_dotenv()
 
 # ——— Connection Configuration ——————————————————————
