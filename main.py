@@ -94,6 +94,22 @@ def show_raspberry_pi_login():
             if submitted:
                 handle_rpi_login(ip_address, username, password)
 
+# ——— Raspberry Pi Login Form ————————————————————————
+# This version uses an environment variable for the IP address
+# def show_raspberry_pi_login():
+#     with st.expander("🖥️ Raspberry Pi Login", expanded=True):
+#         with st.form("rpi_login"):
+#             st.markdown("Enter Raspberry Pi credentials:")
+#             username = st.text_input("RPi Username", placeholder="pi")
+#             password = st.text_input("RPi Password", type="password")
+#             submitted = st.form_submit_button("Connect to Raspberry Pi")
+#             if submitted:
+#                 ip_address = os.getenv("RPI_IP")
+#                 if not ip_address:
+#                     st.error("RPI_IP not set in .env file.")
+#                     return
+#                 handle_rpi_login(ip_address, username, password)
+
 # ——— Database Login Handler ————————————————————————
 def handle_db_login(user, password):
     if not user or not password:
