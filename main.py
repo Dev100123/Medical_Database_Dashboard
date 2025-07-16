@@ -83,32 +83,33 @@ def show_database_login():
                 handle_db_login(user, password)
 
 # ——— Raspberry Pi Login Form ————————————————————————
-def show_raspberry_pi_login():
-    with st.expander("🖥️ Raspberry Pi Login", expanded=True):
-        with st.form("rpi_login"):
-            st.markdown("Enter Raspberry Pi credentials:")
-            ip_address = st.text_input("RPi IP Address", placeholder="192.168.1.100")
-            username = st.text_input("RPi Username", placeholder="pi")
-            password = st.text_input("RPi Password", type="password")
-            submitted = st.form_submit_button("Connect to Raspberry Pi")
-            if submitted:
-                handle_rpi_login(ip_address, username, password)
-
-# ——— Raspberry Pi Login Form ————————————————————————
-# This version uses an environment variable for the IP address
 # def show_raspberry_pi_login():
 #     with st.expander("🖥️ Raspberry Pi Login", expanded=True):
 #         with st.form("rpi_login"):
 #             st.markdown("Enter Raspberry Pi credentials:")
+#             ip_address = st.text_input("RPi IP Address", placeholder="192.168.1.100")
 #             username = st.text_input("RPi Username", placeholder="pi")
 #             password = st.text_input("RPi Password", type="password")
 #             submitted = st.form_submit_button("Connect to Raspberry Pi")
 #             if submitted:
-#                 ip_address = os.getenv("RPI_IP")
-#                 if not ip_address:
-#                     st.error("RPI_IP not set in .env file.")
-#                     return
 #                 handle_rpi_login(ip_address, username, password)
+
+# ——— Raspberry Pi Login Form ————————————————————————
+# This version uses an environment variable for the IP address
+def show_raspberry_pi_login():
+    with st.expander("🖥️ Raspberry Pi Login", expanded=True):
+        with st.form("rpi_login"):
+            st.markdown("Enter Raspberry Pi credentials:")
+            username = st.text_input("RPi Username", placeholder="pi")
+            password = st.text_input("RPi Password", type="password")
+            submitted = st.form_submit_button("Connect to Raspberry Pi")
+            if submitted:
+                ip_address = os.getenv("RPI_IP")
+                if not ip_address:
+                    st.error("RPI_IP not set in .env file.")
+                    return
+                handle_rpi_login(ip_address, username, password)
+
 
 # ——— Database Login Handler ————————————————————————
 def handle_db_login(user, password):
@@ -166,16 +167,49 @@ def handle_rpi_login(ip, username, password, debug=False):
         st.error(f"Connection failed: {e}")
 
 # ——— Database Interface ———————————————————————————
+# ...existing code...
+
 def show_database_interface():
     st.title("📊 Database Explorer")
     if not st.session_state.datasets:
         st.warning("No datasets found")
         return
 
-    st.sidebar.title("📂 Available Datasets")
-    options = ["None"] + list(st.session_state.datasets.keys())
-    selected_table = st.sidebar.radio("Select Dataset", options)
+    # Stylish sidebar
+    st.sidebar.markdown(
+        """
+        <style>
+        .sidebar-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #4F8BF9;
+            margin-bottom: 0.5em;
+        }
+        .dataset-radio label {
+            font-size: 1.1em;
+            padding: 2px 0;
+        }
+        </style>
+        <div class="sidebar-title">📂 Available Datasets</div>
+        """,
+        unsafe_allow_html=True
+    )
+    options = ["Select"] + list(st.session_state.datasets.keys())
+    #selected_table = st.sidebar.ratio(
+    selected_table = st.sidebar.selectbox(
+        "Select Dataset",
+        options,
+        key="dataset_radio",
+        help="Choose a dataset to explore",
+        label_visibility="collapsed"
+    )
     st.session_state.selected_table = selected_table
+
+    st.sidebar.markdown("---")
+    st.sidebar.markdown(
+        "<span style='color:gray;font-size:0.95em;'>Tip: Select a dataset to see its dashboard below.</span>",
+        unsafe_allow_html=True
+    )
 
     display_dataset_content()
 
@@ -189,10 +223,41 @@ def show_raspberry_pi_interface():
         st.warning("No datasets found on Raspberry Pi")
         return
 
-    st.sidebar.title("📂 Available Datasets")
-    options = ["None"] + list(st.session_state.datasets.keys())
-    selected_table = st.sidebar.radio("Select Dataset", options)
+    # Stylish sidebar
+    st.sidebar.markdown(
+        """
+        <style>
+        .sidebar-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #4F8BF9;
+            margin-bottom: 0.5em;
+        }
+        .dataset-radio label {
+            font-size: 1.1em;
+            padding: 2px 0;
+        }
+        </style>
+        <div class="sidebar-title">📂 Available Datasets</div>
+        """,
+        unsafe_allow_html=True
+    )
+    options = ["Select"] + list(st.session_state.datasets.keys())
+    #selected_table = st.sidebar.ratio(
+    selected_table = st.sidebar.selectbox(
+        "Select Dataset",
+        options,
+        key="dataset_radio",
+        help="Choose a dataset to explore",
+        label_visibility="collapsed"
+    )
     st.session_state.selected_table = selected_table
+
+    st.sidebar.markdown("---")
+    st.sidebar.markdown(
+        "<span style='color:gray;font-size:0.95em;'>Tip: Select a dataset to see its dashboard below.</span>",
+        unsafe_allow_html=True
+    )
 
     display_dataset_content()
 
@@ -202,15 +267,15 @@ def show_raspberry_pi_interface():
 # ——— Shared Dataset Display —————————————————————————
 def display_dataset_content():
     sel = st.session_state.selected_table
-    if sel == "None":
+    if sel == "Select":
         display_overview()
     else:
         df = st.session_state.datasets[sel]
         if sel == "anagrafica":
+            #show_anagrafica_dashboard(df)
             cols_to_drop = [2, 3, 7,8]
             df_filtered = df.drop(df.columns[cols_to_drop], axis=1)
             show_anagrafica_dashboard(df_filtered)
-            #show_anagrafica_dashboard(df)
         elif sel == "anamnesi":
             show_anamnesi_dashboard(df)
         elif sel == "consulenza_telematica":
